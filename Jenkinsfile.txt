@@ -2,36 +2,16 @@ pipeline {
     agent any
 
     stages {
-        stage('Checkout') {
+        stage('Git Checkout') {
             steps {
-                git url: 'https://github.com/Mage5462/NodeJsRepo.git'
+                git branch: 'master', url: 'https://github.com/Mage5462/NodeJsRepo.git'
             }
         }
-
-        stage('Install Dependencies') {
+        
+        stage('Run Node App') {
             steps {
-                sh 'npm install'
+                bat 'node index.js'
             }
-        }
-
-        stage('Test') {
-            steps {
-                sh 'npm test'
-            }
-        }
-
-        stage('Build') {
-            steps {
-                sh 'npm run build'
-            }
-        }
-
-        // Add more stages for deployment, etc.
-    }
-
-    post {
-        always {
-            echo 'Build process completed!'
         }
     }
 }
