@@ -1,12 +1,9 @@
-// server.js
-const express = require('express');
-const app = express();
+var http=require("http")
 
-app.get('/', (req, res) => {
-    res.send('Hello, World!');
-});
-
-const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => {
-    console.log(`Server is running on port ${PORT}`);
+http.createServer(function(request,response){
+    var data=new Date();
+    response.end("Date is:"+data.toLocaleString());
+}).listen(8282,function(error){
+  if (error) throw error
+  console.log("Serer successfully started........")
 });
