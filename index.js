@@ -1,9 +1,13 @@
-var http=require("http")
+var express = require('express')
 
-http.createServer(function(request,response){
-    var data=new Date();
-    response.end("Date is:"+data.toLocaleString());
-}).listen(8282,function(error){
-  if (error) throw error
-  console.log("Serer successfully started........")
-});
+var app=express()
+
+app.get("/",function(request,response){
+  response.send("Hello world from node-express application");
+})
+
+
+app.listen(8283,function(err){
+  if (err) throw err
+  console.log("Server is running on port 8283")
+})
